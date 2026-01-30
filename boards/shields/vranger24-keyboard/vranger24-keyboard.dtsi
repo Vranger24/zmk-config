@@ -1,0 +1,18 @@
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+
+        row-gpios = < >;
+        col-gpios = < >;
+
+        diode-direction = "col2row";
+    };
+};
+
+&split {
+    status = "okay";
+};

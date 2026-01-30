@@ -1,0 +1,2 @@
+config SHIELD_VRANGER_SPLIT
+    def_bool y
