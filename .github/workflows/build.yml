@@ -1,39 +1,3 @@
 name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y python3-pip cmake ninja-build git wget unzip
-
-    - name: Install West
-      run: pip3 install west
-
-    - name: Install Zephyr SDK
-      run: |
-        wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.2/zephyr-sdk-0.16.2-linux-x86_64-setup.run -O zephyr-sdk.run
-        chmod +x zephyr-sdk.run
-        ./zephyr-sdk.run -- -d $HOME/zephyr-sdk
-        echo "ZEPHYR_SDK_INSTALL_DIR=$HOME/zephyr-sdk" >> $GITHUB_ENV
-
-    - name: Initialize ZMK and Zephyr
-      run: |
-        west init -l zmk
-        west update
-        west zephyr-export
-      env:
-        ZEPHYR_SDK_INSTALL_DIR: ${{ env.ZEPHYR_SDK_INSTALL_DIR }}
-
-    - name: Build firmware
-      run: |
-        west build -b nice_nano -d build \
-          -- -DZMK_CONFIG=config -DSHIELD=vranger24-keyboard \
-          -DZMK_EXTRA_MODULES=$(pwd)/zmk
