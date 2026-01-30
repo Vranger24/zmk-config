@@ -1,45 +1,47 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
+        /* The chosen display must point to the node inside i2c */
         zmk,display = &oled;
     };
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
-
-        /* ROWS: num, top, home, bottom, thumb */
-        row-gpios = <
-            &gpio0 18 (GPIO_ACTIVE_LOW)
-            &gpio0 15 (GPIO_ACTIVE_LOW)
-            &gpio0 14 (GPIO_ACTIVE_LOW)
-            &gpio0 16 (GPIO_ACTIVE_LOW)
-            &gpio0 10 (GPIO_ACTIVE_LOW)
-        >;
-
-        /* COLUMNS: outer → thumbspace */
-        col-gpios = <
-            &gpio0 2  (GPIO_ACTIVE_LOW)
-            &gpio0 3  (GPIO_ACTIVE_LOW)
-            &gpio0 7  (GPIO_ACTIVE_LOW)
-            &gpio0 6  (GPIO_ACTIVE_LOW)
-            &gpio0 5  (GPIO_ACTIVE_LOW)
-            &gpio0 4  (GPIO_ACTIVE_LOW)
-            &gpio0 8  (GPIO_ACTIVE_LOW)
-        >;
-
         diode-direction = "col2row";
-    };
 
-    oled: oled {
-        compatible = "ssd1306";
-        width = <64>;
-        height = <128>;
+        row-gpios = <
+            &gpio0 18 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+            &gpio0 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+            &gpio0 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+            &gpio0 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+            &gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+        >;
+
+        col-gpios = <
+            &gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+            &gpio0 3  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+            &gpio0 7  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+            &gpio0 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+            &gpio0 5  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+            &gpio0 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+            &gpio0 8  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+        >;
     };
 };
 
-&i2c0 {
+/* Use pro_micro_i2c to use the default nice!nano SDA/SCL pins */
+&pro_micro_i2c {
     status = "okay";
-    sda-pin = <0>;
-    scl-pin = <1>;
+
+    oled: oled@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        width = <128>;
+        height = <64>;
+        segment-remap;
+        com-invdir;
+        com-sequential;
+        prechargep = <0x22>;
+    };
 };
