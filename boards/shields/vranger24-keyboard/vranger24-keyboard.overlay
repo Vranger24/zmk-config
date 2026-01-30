@@ -1,0 +1,45 @@
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,display = &oled;
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+
+        /* ROWS: num, top, home, bottom, thumb */
+        row-gpios = <
+            &gpio0 18 (GPIO_ACTIVE_LOW)
+            &gpio0 15 (GPIO_ACTIVE_LOW)
+            &gpio0 14 (GPIO_ACTIVE_LOW)
+            &gpio0 16 (GPIO_ACTIVE_LOW)
+            &gpio0 10 (GPIO_ACTIVE_LOW)
+        >;
+
+        /* COLUMNS: outer → thumbspace */
+        col-gpios = <
+            &gpio0 2  (GPIO_ACTIVE_LOW)
+            &gpio0 3  (GPIO_ACTIVE_LOW)
+            &gpio0 7  (GPIO_ACTIVE_LOW)
+            &gpio0 6  (GPIO_ACTIVE_LOW)
+            &gpio0 5  (GPIO_ACTIVE_LOW)
+            &gpio0 4  (GPIO_ACTIVE_LOW)
+            &gpio0 8  (GPIO_ACTIVE_LOW)
+        >;
+
+        diode-direction = "col2row";
+    };
+
+    oled: oled {
+        compatible = "ssd1306";
+        width = <64>;
+        height = <128>;
+    };
+};
+
+&i2c0 {
+    status = "okay";
+    sda-pin = <0>;
+    scl-pin = <1>;
+};
