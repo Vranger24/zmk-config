@@ -1,10 +1,10 @@
-# VKey29 / VRanger24 ZMK Layout Guide
+# VKey29 ZMK Layout Guide
 
 ## How the layout works
 
 ### 1. **Hardware: `.dtsi` and `.overlay`**
 
-- **`vranger24-keyboard.dtsi`** (and **`vranger24-keyboard.overlay`**) define the **physical matrix**:
+- **`vkey29.dtsi`** (and **`vkey29_left.overlay / vkey29_right.overlay`**) define the **physical matrix**:
   - **5 rows** × **7 columns** = **35 switch positions** per half.
   - Rows are driven (e.g. “num, top, home, bottom, thumb”).
   - Columns are read.
@@ -12,7 +12,7 @@
 
 ### 2. **Keymap: `.keymap`**
 
-- **`vranger24-keyboard.keymap`** defines **what each key does** (behaviors).
+- **`config/keymap/vkey29.keymap`** defines **what each key does** (behaviors).
 - **Rule:** You must have **exactly one binding per matrix position**, in **keyboard scan order**.
 - For `kscan-gpio-matrix` without a transform, that order is **row-major**:
   - Row 0: positions 0–6 (col 0 → col 6)
@@ -21,7 +21,7 @@
   - Row 3: positions 21–27
   - Row 4: positions 28–34
 
-So you need **35 bindings** in the `default_layer` (and the same count for any other layer, or use `&trans` for “same as below”).
+So you need **35 bindings per half** (70 total for split central) in each layer (and the same count for any other layer, or use `&trans` for “same as below”).
 
 ### 3. **Binding order (physical layout)**
 
@@ -58,9 +58,9 @@ See [ZMK Keymap Behaviors](https://zmk.dev/docs/keymaps) for more.
 1. **Know your physical layout**  
    Which key is at which row/column (e.g. from a schematic or PCB silkscreen). If you have a “VKey29” or “VRanger24” layout diagram, use it.
 
-2. **Edit `vranger24-keyboard.keymap`**  
-   - Keep **35 entries** in `bindings = < ... >;` for the default layer.
-   - Put the behavior for **position 0** first, then **1**, then **2**, … then **34**.
+2. **Edit `config/keymap/vkey29.keymap`**  
+   - For split central: **70 entries** per layer (35 left + 35 right).
+   - Put the behavior for **position 0** first, then **1**, … then **69** (left 0–34, right 35–69).
    - For a position with no key, use `&trans`.
 
 3. **Optional: matrix transform**  
@@ -73,11 +73,12 @@ See [ZMK Keymap Behaviors](https://zmk.dev/docs/keymaps) for more.
 
 ## File roles (summary)
 
-| File                 | Role |
-|----------------------|------|
-| `Kconfig.shield`     | Enables the shield (e.g. for build menu). |
-| `vranger24-keyboard.dtsi` | Default hardware: matrix (rows/cols), display. |
-| `vranger24-keyboard.overlay` | Board-specific overrides (e.g. nice!nano pins, I2C, OLED). |
-| `vranger24-keyboard.keymap` | **Your keymap:** one binding per key in kscan order. |
+| File                     | Role |
+|--------------------------|------|
+| `Kconfig.shield`         | Enables the shield (e.g. for build menu). |
+| `vkey29.dtsi`            | Base hardware: kscan, I2C, OLED. |
+| `vkey29_left.overlay`    | Left half: row/col GPIOs. |
+| `vkey29_right.overlay`   | Right half: row/col GPIOs. |
+| `config/keymap/vkey29.keymap` | **Your keymap:** one binding per key in kscan order (70 for split central). |
 
 Your layout is defined **only** in the keymap (and optionally by a matrix transform); the `.dtsi`/`.overlay` only define the matrix size and pins.

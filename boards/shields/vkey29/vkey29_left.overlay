@@ -1,0 +1,19 @@
+&kscan0 {
+    row-gpios = <
+        &gpio0 18 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* num */
+        &gpio0 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* top */
+        &gpio0 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* home */
+        &gpio0 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* bottom */
+        &gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* thumb */
+    >;
+
+    col-gpios = <
+        &gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* outer */
+        &gpio0 3  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* pinky */
+        &gpio0 7  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* ring */
+        &gpio0 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* middle */
+        &gpio0 5  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* index */
+        &gpio0 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* inner */
+        &gpio0 8  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* thumbspace */
+    >;
+};

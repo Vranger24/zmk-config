@@ -1,2 +1,2 @@
-config SHIELD_VRANGER_SPLIT
-    def_bool y
+config SHIELD_VKEY29
+    def_bool $(shields_list_contains,vkey29)
