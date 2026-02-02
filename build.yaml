@@ -21,5 +21,8 @@
 
 include:
   - board: nice_nano
-    shield: vranger24-keyboard
-    artifact-name: vranger24_keyboard
+    shield: vkey29_left
+    artifact-name: vkey29_left
+  - board: nice_nano
+    shield: vkey29_right
+    artifact-name: vkey29_right

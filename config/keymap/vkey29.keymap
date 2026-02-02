@@ -1,5 +1,4 @@
 /*
-/*
  * VKey29 / VRanger24 keymap
  *
  * Matrix: 5 rows × 7 columns
@@ -64,86 +63,5 @@
 				&kp LSHFT &trans    &kp LCTRL &kp LALT  &trans    &kp LGUI  &kp SPACE &kp RET  &trans    &kp BSPC  &trans    &kp LSHFT &trans    &kp C_MUTE
             >;
         };
-	};
-};
-*/
-/*
- * VKey29 / VRanger24 keymap
- * Matrix: 5 rows × 7 columns
- * ZMK split: one half defined, other half mirrored automatically
- */
-
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-
-/ {
-	keymap {
-		compatible = "zmk,keymap";
-
-		/* ===================== DEFAULT ===================== */
-		default_layer {
-			display-name = "Default";
-
-			bindings = <
-				/* Row 0: num */
-				&none &none &kp N2 &kp N3 &kp N4 &kp N5 &none
-
-				/* Row 1: top */
-				&kp ESC &kp N1 &kp W &kp E &kp R &kp T &none
-
-				/* Row 2: home */
-				&kp TAB &kp Q &kp S &kp D &kp F &kp G &none
-
-				/* Row 3: bottom */
-				&kp CAPS &kp A &kp X &kp C &kp V &kp B &none
-
-				/* Row 4: thumb */
-				&kp LSHFT &kp Z &kp LCTRL &kp LALT &mo 1 &kp LGUI &kp SPACE
-			>;
-		};
-
-		/* ===================== UPPER ===================== */
-		upper_layer {
-			display-name = "Upper";
-
-			bindings = <
-				/* Row 0 */
-				&none &none &trans &trans &trans &trans &none
-
-				/* Row 1 */
-				&kp TILDE &trans &trans &trans &trans &trans &none
-
-				/* Row 2 */
-				&kp GRAVE &trans &trans &trans &trans &trans &none
-
-				/* Row 3 */
-				&trans &trans &trans &trans &trans &trans &none
-
-				/* Row 4 */
-				&kp LSHFT &trans &kp LCTRL &kp LALT &trans &kp LGUI &kp SPACE
-			>;
-		};
-
-		/* ===================== LOWER ===================== */
-		lower_layer {
-			display-name = "Lower";
-
-			bindings = <
-				/* Row 0 */
-				&none &none &kp F2 &kp F3 &kp F4 &kp F5 &none
-
-				/* Row 1 */
-				&kp F11 &kp F1 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
-
-				/* Row 2 */
-				&bt BT_CLR &bt BT_SEL 0 &trans &trans &trans &kp C_BRI_UP &none
-
-				/* Row 3 */
-				&trans &trans &trans &trans &trans &kp C_BRI_DN &none
-
-				/* Row 4 */
-				&kp LSHFT &trans &kp LCTRL &kp LALT &trans &kp LGUI &kp SPACE
-			>;
-		};
 	};
 };
