@@ -33,9 +33,9 @@
 				/* Row 2 */
 				&bt BT_CLR &bt BT_SEL 0 &trans &trans   &trans    &kp C_BRI_UP &none  &none    &kp C_PP  &trans    &trans    &trans    &kp RIGHT &kp C_VOL_UP
 				/* Row 3 */
-				&trans    &trans    &trans    &trans    &trans    &kp C_BRI_UP &none  &none    &kp C_NEXT &trans   &trans    &trans    &trans    &kp C_VOL_DN
+				&trans  &kp K_REDO &kp K_CUT  &kp K_COPY &kp K_PASTE &kp C_BRI_UP &none &none  &kp C_NEXT &trans   &trans    &trans    &trans    &kp C_VOL_DN
 				/* Row 4 */
-				&kp CAPS  &kp K_UNDO &kp K_REDO &kp LALT &kp LSHFT &kp LGUI &kp SPACE &kp RET  &kp DEL    &trans   &trans    &trans    &trans    &kp C_MUTE
+				&kp CAPS  &kp K_UNDO &kp LCTRL &kp LALT &kp LSHFT &kp LGUI  &kp SPACE &kp RET  &kp DEL    &trans   &trans    &trans    &trans    &kp C_MUTE
             >;
         };
 	};
