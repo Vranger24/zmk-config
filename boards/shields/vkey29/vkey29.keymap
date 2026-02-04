@@ -19,7 +19,7 @@
 				/* Row 3 */
 				&kp TAB   &kp A     &kp X     &kp C     &kp V     &kp B    &none    &none     &kp N     &kp M     &kp COMMA &kp DOT   &kp SEMI  &kp SQT
 				/* Row 4 */
-				&kp LSHFT &kp Z     &kp LCTRL &kp LALT  &LSHFT    &kp LGUI &kp SPACE &kp RET  &kp BSPC  &mo 1  &kp MINUS &kp EQUAL &kp FSLH  &kp BSLH
+				&kp LSHFT &kp Z     &kp LCTRL &kp LALT  &kp LSHFT &kp LGUI &kp SPACE &kp RET  &kp BSPC  &mo 1  &kp MINUS &kp EQUAL &kp FSLH  &kp BSLH
 			>;
 		};
 
