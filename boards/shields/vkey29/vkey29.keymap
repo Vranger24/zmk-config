@@ -33,7 +33,7 @@
 				/* Row 2 */
 				&bt BT_CLR &bt BT_SEL 0 &trans &trans   &trans    &kp C_BRI_UP &none  &none    &kp C_PP  &trans    &trans    &trans    &kp RIGHT &kp C_VOL_UP
 				/* Row 3 */
-				&trans  &kp LG(LS(Z)) &kp LG(X)  &kp LG(C) &kp LG(V) &kp C_BRI_UP &none &none  &kp C_NEXT &trans   &trans    &trans    &trans    &kp C_VOL_DN
+				&trans  &kp LG(LS(Z))  &kp LG(X)  &kp LG(C) &kp LG(V) &kp C_BRI_DN &none &none  &kp C_NEXT &trans   &trans    &trans    &trans    &kp C_VOL_DN
 				/* Row 4 */
 				&kp CAPSLOCK &kp LG(Z) &kp LCTRL &kp LALT &kp LSHFT &kp LGUI &kp SPACE &kp RET &kp DEL   &trans   &trans    &trans    &trans    &kp C_MUTE
             >;
