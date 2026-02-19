@@ -1,5 +1,10 @@
 #include "vkey29.dtsi"
 
+/* Right half: columns 0-6 on this MCU map to logical columns 7-13 in the full keymap */
+&default_transform {
+    col-offset = <7>;
+};
+
 &kscan0 {
     row-gpios = <
         &gpio0 5  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)  /* num */

@@ -1,0 +1,17 @@
+# VKey29 split shield: left = central, right = peripheral
+if SHIELD_VKEY29_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "VKey29"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_VKEY29_LEFT || SHIELD_VKEY29_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif

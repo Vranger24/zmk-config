@@ -1,0 +1,15 @@
+file_format: "1"
+id: vkey29
+name: VKey29
+type: shield
+url: https://github.com/V-Key-29/zmk-config
+requires:
+  - pro_micro
+exposes:
+  - i2c_oled
+features:
+  - keys
+  - display
+siblings:
+  - vkey29_left
+  - vkey29_right
